@@ -298,7 +298,7 @@ mode: single
 max_exceeded: silent
 ```
 
-It's important to wait for the motion sensor to change from `on` to `off` before sending the notification. This ensures that the event has ended and the video is accessible; otherwise, you may get an error instead of the video link.
+Waiting for the motion sensor to change from `on` to `off` before sending the notification is essential. Waiting ensures that the event has ended and the video is accessible; otherwise, you may get an error instead of the video link.
 
 ## Event Entities Support
 
@@ -374,7 +374,7 @@ actions:
 
 **Warning:**
 
-When processing NFC scans, always validate the scanned ID. The scan event is also triggered by unknown NFC cards. Additionally, this event was developed using third-party cards, as the developer did not have access to official UniFi cards at the time. With third-party cards, the scan relies on the card's serial number. While this approach is not uncommon, it is important to note that the card's serial number is generally not considered a secure identifier and can be duplicated relatively easily.
+When processing NFC scans, always validate the scanned ID. Unknown NFC cards also trigger the scan event. Additionally, this event was developed using third-party cards, as the developer did not have access to official UniFi cards at the time. With third-party cards, the scan relies on the card's serial number. While this approach is not uncommon, it is essential to note that the card's serial number is generally not considered a secure identifier and can be duplicated relatively easily.
 
 ### Fingerprint Identified Event
 
@@ -413,7 +413,7 @@ action:
 
 **Warning:**
 
-Similar to NFC, an event is triggered both when a fingerprint is recognized and when it is not recognized. However, unlike NFC, at the time of implementation, no fingerprint ID is included in the event if the fingerprint is unknown.
+Similar to NFC, an event is triggered when a fingerprint is recognized and not recognized. However, unlike NFC, at the time of implementation, no fingerprint ID is included in the event if the fingerprint is unknown.
 
 ## Troubleshooting
 
