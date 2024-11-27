@@ -281,7 +281,7 @@ title: "Security: Camera Motion Notification"
 description: "Sends a notification with video upon motion detection."
 triggers:
   - entity_id:
-      - binary_sensor.g5_bullet_motion (replace with your camera)
+      - binary_sensor.g5_bullet_motion # Replace with your camera entity
     trigger: state
     from: "on"
     to: "off"
@@ -295,7 +295,7 @@ actions:
         video: >-
           {% raw %}/api/unifiprotect/video/{{ config_entry_id(trigger.entity_id) }}/{{
           trigger.from_state.attributes.event_id }}{% endraw %}
-    action: notify.mobile_app_your_device (replace with your notification target)
+    action: notify.mobile_app_your_device # Replace with your notification target
 mode: single
 max_exceeded: silent
 ```
@@ -322,7 +322,7 @@ description: Automation that triggers when the G4 Doorbell Pro rings
 triggers:
   - event_type: state_changed
     event_data:
-      entity_id: event.g4_doorbell_pro_poe_doorbell (replace with your camera)
+      entity_id: event.g4_doorbell_pro_poe_doorbell # Replace with your doorbell entity
     trigger: event
 conditions:
   - condition: template
@@ -332,7 +332,7 @@ actions:
   - data:
       message: Someone is at the door!
       title: Doorbell Notification
-    action: notify.mobile_app_your_device (replace with your notification target)
+    action: notify.mobile_app_your_device # Replace with your notification target
 ```
 
 The condition is required to prevent the notification from being triggered by events of type 'unknown', for example, during a restart.
@@ -356,20 +356,20 @@ description: >-
 triggers:
   - event_type: state_changed
     event_data:
-      entity_id: event.g4_doorbell_pro_poe_nfc  (replace with your camera)
+      entity_id: event.g4_doorbell_pro_poe_nfc  # Replace with your doorbell entity
     trigger: event
 conditions:
   - condition: template
     value_template: >
       {% raw %}{{ trigger.event.data.new_state.attributes.event_type == 'scanned' and
-      trigger.event.data.new_state.attributes.nfc_id == 'ABCDEF1234' }} (replace with your nfc_id){% endraw %}
+      trigger.event.data.new_state.attributes.nfc_id == 'ABCDEF1234' }} {% endraw %} #replace with your nfc_id
 actions:
   - data:
       message: >-
         {% raw %}The NFC card with ID {{ trigger.event.data.new_state.attributes.nfc_id
         }} has been scanned at the doorbell.{% endraw %}
       title: NFC Scan Notification
-    action: notify.mobile_app_your_device (replace with your notification target)
+    action: notify.mobile_app_your_device # Replace with your notification target
 ```
 
 **Warning:**
@@ -394,21 +394,17 @@ trigger:
   - platform: event
     event_type: state_changed
     event_data:
-      entity_id: event.g4_doorbell_pro_poe_fingerprint (replace with your camera)
+      entity_id: event.g4_doorbell_pro_poe_fingerprint # Replace with your doorbell entity
 condition:
   - condition: template
     value_template: >
       {% raw %}{{ trigger.event.data.new_state.attributes.event_type == 'identified' and trigger.event.data.new_state.attributes.ulp_id != '' }}{% endraw %}
 action:
-  - service: notify.mobile_app_your_device (replace with your notification target)
+  - service: notify.mobile_app_your_device # Replace with your notification target
     data:
       {% raw %}message: "Fingerprint identified: Access granted for user with ID {{ trigger.event.data.new_state.attributes.ulp_id }}."{% endraw %}
       title: "Fingerprint Access Notification"
 ```
-
-**Warning:**
-
-Certainly! Here is the warning translated into English:
 
 **Warning:**
 
