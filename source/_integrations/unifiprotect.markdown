@@ -277,7 +277,7 @@ The easiest way to find the `nvr_id`, `camera_id`, `start`, and `end` times is b
 ### Example Notification Automation with Video
 
 ```yaml
-title: "Security: Camera Motion Notification"
+alias: "Security: Camera Motion Notification"
 description: "Sends a notification with video upon motion detection."
 triggers:
   - entity_id:
@@ -290,11 +290,9 @@ actions:
       message: "Motion detected at Camera XXX"
       data:
         image: >-
-          {% raw %}/api/unifiprotect/thumbnail/{{ config_entry_id(trigger.entity_id)
-          }}/{{ trigger.from_state.attributes.event_id }}{% endraw %}
+          {% raw %}/api/unifiprotect/thumbnail/{{ config_entry_id(trigger.entity_id) }}/{{ trigger.from_state.attributes.event_id }}{% endraw %}
         video: >-
-          {% raw %}/api/unifiprotect/video/{{ config_entry_id(trigger.entity_id) }}/{{
-          trigger.from_state.attributes.event_id }}{% endraw %}
+          {% raw %}/api/unifiprotect/video/{{ config_entry_id(trigger.entity_id) }}/{{ trigger.from_state.attributes.event_id }}{% endraw %}
     action: notify.mobile_app_your_device # Replace with your notification target
 mode: single
 max_exceeded: silent
