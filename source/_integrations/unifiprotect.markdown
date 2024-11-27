@@ -361,8 +361,11 @@ triggers:
 conditions:
   - condition: template
     value_template: >
-      {% raw %}{{ trigger.event.data.new_state.attributes.event_type == 'scanned' and
-      trigger.event.data.new_state.attributes.nfc_id == 'ABCDEF1234' }} {% endraw %} #replace with your nfc_id
+      {% raw %}{{ 
+         trigger.event.data.new_state is not none and
+         trigger.event.data.new_state.attributes.event_type == 'scanned' and
+         trigger.event.data.new_state.attributes.nfc_id in ['ABCDEF1234', 'OTHER_ALLOWED_ID']
+       }}{% endraw %}
 actions:
   - data:
       message: >-
@@ -398,12 +401,17 @@ trigger:
 condition:
   - condition: template
     value_template: >
-      {% raw %}{{ trigger.event.data.new_state.attributes.event_type == 'identified' and trigger.event.data.new_state.attributes.ulp_id != '' }}{% endraw %}
+      {% raw %}{{ 
+         trigger.event.data.new_state is not none and
+         trigger.event.data.new_state.attributes.event_type == 'identified' and
+         (trigger.event.data.new_state.attributes.ulp_id|default('')) != '' and
+         trigger.event.data.new_state.attributes.ulp_id in ['ALLOWED_ID1', 'ALLOWED_ID2']
+       }}{% endraw %}
 action:
   - service: notify.mobile_app_your_device # Replace with your notification target
     data:
-      {% raw %}message: "Fingerprint identified: Access granted for user with ID {{ trigger.event.data.new_state.attributes.ulp_id }}."{% endraw %}
-      title: "Fingerprint Access Notification"
+      {% raw %}message: "Fingerprint identified with ID: {{ trigger.event.data.new_state.attributes.ulp_id }}"{% endraw %}
+      title: "Fingerprint Scan Notification"
 ```
 
 **Warning:**
