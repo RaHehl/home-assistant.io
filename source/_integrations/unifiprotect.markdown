@@ -367,8 +367,7 @@ conditions:
 actions:
   - data:
       message: >-
-        {% raw %}The NFC card with ID {{ trigger.event.data.new_state.attributes.nfc_id
-        }} has been scanned at the doorbell.{% endraw %}
+        {% raw %}The NFC card with ID {{ trigger.event.data.new_state.attributes.nfc_id }} has been scanned at the doorbell.{% endraw %}
       title: NFC Scan Notification
     action: notify.mobile_app_your_device # Replace with your notification target
 ```
