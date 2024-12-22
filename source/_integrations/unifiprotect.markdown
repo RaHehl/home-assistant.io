@@ -260,7 +260,7 @@ Use to remove a privacy zone from a camera.
 
 | Data attribute | Optional | Description                                                                                                 |
 | -------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `device_id`    | No       | Any device from the UniFi Protect instance you want to retrieve keyring information for.                     |
+| `device_id`    | No       | Any device from the UniFi Protect instance you want to retrieve keyring information for.                    |
 
 #### Example Usage
 
