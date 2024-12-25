@@ -127,6 +127,22 @@ Reset main brush consumable - The main brush/ roller is expected to be replaced 
 
 Reset air filter - The air filter is expected to be replaced every 150 hours.
 
+### Actions
+
+#### Action `roborock.vacuum_goto`
+
+Go the specified coordinates.
+
+- **Data attribute**: `entity_id`
+  - **Description**: Only act on a specific robot.
+  - **Optional**: No.
+- **Data attribute**: `x_coord`
+  - **Description**: X-coordinate, integer value. The dock is located at x-coordinate 25500.
+  - **Optional**: No.
+- **Data attribute**: `y_coord`
+  - **Description**: Y-coordinate, integer value. The dock is located at y-coordinate 25500.
+  - **Optional**: No.
+
 ### Image
 
 You can see all the maps within your Roborock account. Keep in mind that they are device-specific. The maps require the cloud API to communicate as the maps are seemingly stored on the cloud. If someone can figure out a way around this - contributions are always welcome.
