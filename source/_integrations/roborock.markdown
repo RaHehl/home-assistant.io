@@ -129,7 +129,7 @@ Reset air filter - The air filter is expected to be replaced every 150 hours.
 
 ### Actions
 
-#### Action `roborock.vacuum_goto`
+#### Action `roborock.set_vacuum_goto_position`
 
 Go the specified coordinates.
 
@@ -143,7 +143,7 @@ Go the specified coordinates.
   - **Description**: Y-coordinate, integer value. The dock is located at y-coordinate 25500.
   - **Optional**: No.
 
-#### Action `roborock.get_current_position`
+#### Action `roborock.get_vacuum_current_position`
 
 Get the current position of the vacuum.
 
@@ -154,7 +154,7 @@ Get the current position of the vacuum.
 Example:
 
 ```yaml
-action: roborock.get_current_position
+action: roborock.get_vacuum_current_position
 target:
   entity_id: vacuum.roborock_s7
 data: {}
