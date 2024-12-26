@@ -143,6 +143,31 @@ Go the specified coordinates.
   - **Description**: Y-coordinate, integer value. The dock is located at y-coordinate 25500.
   - **Optional**: No.
 
+#### Action `roborock.get_current_position`
+
+Get the current position of the vacuum.
+
+- **Data attribute**: `entity_id`
+  - **Description**: Only act on a specific robot.
+  - **Optional**: No.
+
+Example:
+
+```yaml
+action: roborock.get_current_position
+target:
+  entity_id: vacuum.roborock_s7
+data: {}
+```
+
+- **Result**: You will get a response like this:
+
+  ```json
+  vacuum.roborock_s7:
+    x: 28081
+    y: 25168
+  ```
+
 ### Image
 
 You can see all the maps within your Roborock account. Keep in mind that they are device-specific. The maps require the cloud API to communicate as the maps are seemingly stored on the cloud. If someone can figure out a way around this - contributions are always welcome.
