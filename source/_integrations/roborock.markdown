@@ -145,7 +145,7 @@ Go the specified coordinates.
 
 #### Action `roborock.get_vacuum_current_position`
 
-Get the current position of the vacuum.
+Get the current position of the vacuum. This is a cloud call and should only be used for diagnostics. This is not meant to be used for automations. Frequent requests can lead to rate limiting. 
 
 - **Data attribute**: `entity_id`
   - **Description**: Only act on a specific robot.
