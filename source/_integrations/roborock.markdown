@@ -162,7 +162,7 @@ data: {}
 
 - **Result**: You will get a response like this:
 
-  ```json
+  ```yaml
   vacuum.roborock_s7:
     x: 28081
     y: 25168
